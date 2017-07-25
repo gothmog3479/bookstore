@@ -27,4 +27,9 @@ public class Order {
     @OneToOne(cascade=CascadeType.ALL)
     private ShippingAddress shippingAddress;
 
+    @OneToOne(cascade=CascadeType.ALL)
+    private BillingAddress billingAddress;
+
+    
+
 }
