@@ -37,7 +37,7 @@ public class User implements UserDetails{
     @OneToMany(cascade = CascadeType.ALL, mappedBy = "user")
     private List<UserPayment> userPaymentList;
 
-    
+
 
 
     @Override
