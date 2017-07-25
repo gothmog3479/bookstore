@@ -18,5 +18,5 @@ public class CartItem {
     private int cty;
     private BigDecimal subTotal;
 
-    
+
 }
