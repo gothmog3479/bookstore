@@ -27,6 +27,9 @@ public class User implements UserDetails{
     private String phone;
     private boolean enabled=true;
 
+    @OneToOne(cascade = CascadeType.ALL, mappedBy = "user")
+    private ShoppingCart shoppingCart;
+
 
     @Override
     public Collection<? extends GrantedAuthority> getAuthorities() {
