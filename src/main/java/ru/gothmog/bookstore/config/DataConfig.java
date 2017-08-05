@@ -23,7 +23,7 @@ import java.util.Properties;
  */
 @Configuration
 @EnableTransactionManagement
-@ComponentScan({"ru.gothmog.bookstore.config.*"})
+@ComponentScan({"ru.gothmog.bookstore.config"})
 @PropertySource(value = {"classpath:db.properties"})
 @EnableJpaRepositories(basePackages = {"ru.gothmog.bookstore.repository"}, entityManagerFactoryRef = "entityManagerFactoryBean")
 public class DataConfig {
@@ -39,7 +39,7 @@ public class DataConfig {
         LocalContainerEntityManagerFactoryBean entityManagerFactoryBean = new LocalContainerEntityManagerFactoryBean();
         entityManagerFactoryBean.setDataSource(dataSource());
         entityManagerFactoryBean.setPersistenceProviderClass(HibernatePersistenceProvider.class);
-        entityManagerFactoryBean.setPackagesToScan("ru.gothmog.itinvent.model.*");
+        entityManagerFactoryBean.setPackagesToScan("ru.gothmog.itinvent.domain.*");
         entityManagerFactoryBean.setJpaProperties(hibernateProperties());
         return entityManagerFactoryBean;
     }
