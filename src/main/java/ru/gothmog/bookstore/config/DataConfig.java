@@ -59,7 +59,7 @@ public class DataConfig {
         return properties;
     }
 
-    @Bean(destroyMethod = "close")
+    @Bean
     public DataSource dataSource() {
         if (dataSource == null) {
             HikariConfig hikariConfig = new HikariConfig();
