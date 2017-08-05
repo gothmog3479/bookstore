@@ -23,7 +23,7 @@ import org.thymeleaf.templatemode.TemplateMode;
 @Configuration
 @EnableWebMvc
 @ComponentScan({"ru.gothmog.bookstore.*",
-                "ru.gothmog.bookstore.config",
+                "ru.gothmog.bookstore.config.*",
                 "ru.gothmog.bookstore.controller",
                 "ru.gothmog.bookstore.repository"})
 public class WebConfig extends WebMvcConfigurerAdapter implements ApplicationContextAware {
