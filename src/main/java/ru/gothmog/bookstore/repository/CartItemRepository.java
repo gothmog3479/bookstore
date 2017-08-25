@@ -9,11 +9,10 @@ import ru.gothmog.bookstore.domain.ShoppingCart;
 import java.util.List;
 
 /**
- * @author gothmog on 06.08.2017.
+ * @author d.grushetskiy
  */
 @Transactional
-public interface CartItemRepository extends CrudRepository<CartItem, Long> {
-
+public interface CartItemRepository extends CrudRepository<CartItem, Long>{
     List<CartItem> findByShoppingCart(ShoppingCart shoppingCart);
 
     List<CartItem> findByOrder(Order order);

@@ -4,7 +4,7 @@ import org.springframework.data.repository.CrudRepository;
 import ru.gothmog.bookstore.domain.UserPayment;
 
 /**
- * @author gothmog on 06.08.2017.
+ * @author d.grushetskiy
  */
 public interface UserPaymentRepository extends CrudRepository<UserPayment, Long>{
 }

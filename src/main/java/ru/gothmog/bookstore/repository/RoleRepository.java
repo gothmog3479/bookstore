@@ -4,7 +4,7 @@ import org.springframework.data.repository.CrudRepository;
 import ru.gothmog.bookstore.domain.security.Role;
 
 /**
- * @author gothmog on 06.08.2017.
+ * @author d.grushetskiy
  */
 public interface RoleRepository extends CrudRepository<Role, Long>{
     Role findByname(String name);

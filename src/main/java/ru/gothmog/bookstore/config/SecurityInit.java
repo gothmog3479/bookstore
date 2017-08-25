@@ -3,8 +3,7 @@ package ru.gothmog.bookstore.config;
 import org.springframework.security.web.context.AbstractSecurityWebApplicationInitializer;
 
 /**
- * on Spring Security
- * @author gothmog on 06.08.2017.
+ * @author d.grushetskiy
  */
-public class SecurityInit extends AbstractSecurityWebApplicationInitializer {
+public class SecurityInit extends AbstractSecurityWebApplicationInitializer{
 }

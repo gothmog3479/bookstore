@@ -10,19 +10,18 @@ import ru.gothmog.bookstore.domain.security.UserRole;
 import java.util.Set;
 
 /**
- * @author gothmog on 06.08.2017.
+ * @author d.grushetskiy
  */
-public interface UserService {
-
+public interface UserService{
     PasswordResetToken getPasswordResetToken(final String token);
 
     void createPasswordResetTokenForUser(final User user, final String token);
 
     User findByUsername(String username);
 
-    User findByEmail (String email);
+    User findByEmail(String email);
 
-    User findById(Long id);
+    User findById (Long id);
 
     User createUser(User user, Set<UserRole> userRoles) throws Exception;
 

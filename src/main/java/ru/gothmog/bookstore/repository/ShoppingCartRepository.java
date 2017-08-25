@@ -4,7 +4,7 @@ import org.springframework.data.repository.CrudRepository;
 import ru.gothmog.bookstore.domain.ShoppingCart;
 
 /**
- * @author gothmog on 06.08.2017.
+ * @author d.grushetskiy
  */
-public interface ShoppingCartRepository extends CrudRepository<ShoppingCart, Long> {
+public interface ShoppingCartRepository extends CrudRepository<ShoppingCart, Long>{
 }
