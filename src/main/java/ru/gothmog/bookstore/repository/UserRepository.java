@@ -6,7 +6,7 @@ import ru.gothmog.bookstore.domain.User;
 /**
  * @author d.grushetskiy
  */
-public interface UserRepository extends CrudRepository<User,Long>{
+public interface UserRepository extends CrudRepository<User, Long> {
     User findByUsername(String username);
 
     User findByEmail(String email);

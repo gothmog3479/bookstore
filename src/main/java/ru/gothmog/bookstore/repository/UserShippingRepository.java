@@ -6,5 +6,5 @@ import ru.gothmog.bookstore.domain.UserShipping;
 /**
  * @author d.grushetskiy
  */
-public interface UserShippingRepository extends CrudRepository<UserShipping, Long>{
+public interface UserShippingRepository extends CrudRepository<UserShipping, Long> {
 }

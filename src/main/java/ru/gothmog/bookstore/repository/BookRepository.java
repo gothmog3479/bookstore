@@ -8,7 +8,7 @@ import java.util.List;
 /**
  * @author d.grushetskiy
  */
-public interface BookRepository extends CrudRepository<Book, Long>{
+public interface BookRepository extends CrudRepository<Book, Long> {
     List<Book> findByCategory(String category);
 
     List<Book> findByTitleContaining(String title);

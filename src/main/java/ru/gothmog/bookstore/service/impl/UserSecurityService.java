@@ -12,14 +12,14 @@ import ru.gothmog.bookstore.repository.UserRepository;
  * @author gothmog on 26.08.2017.
  */
 @Service
-public class UserSecurityService implements UserDetailsService{
+public class UserSecurityService implements UserDetailsService {
     @Autowired
     private UserRepository userRepository;
 
     @Override
     public UserDetails loadUserByUsername(String username) throws UsernameNotFoundException {
         User user = userRepository.findByUsername(username);
-        if (user == null){
+        if (user == null) {
             throw new UsernameNotFoundException("Username not found");
         }
         return user;

@@ -8,7 +8,7 @@ import java.util.List;
  * @author d.grushetskiy
  */
 public interface BookService {
-    List<Book> findAll ();
+    List<Book> findAll();
 
     Book findOne(Long id);
 

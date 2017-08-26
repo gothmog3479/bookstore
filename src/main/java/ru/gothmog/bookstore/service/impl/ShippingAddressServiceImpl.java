@@ -9,7 +9,7 @@ import ru.gothmog.bookstore.service.ShippingAddressService;
  * @author gothmog on 26.08.2017.
  */
 @Service
-public class ShippingAddressServiceImpl implements ShippingAddressService{
+public class ShippingAddressServiceImpl implements ShippingAddressService {
     @Override
     public ShippingAddress setByUserShipping(UserShipping userShipping, ShippingAddress shippingAddress) {
         shippingAddress.setShippingAddressName(userShipping.getUserShippingName());

@@ -9,6 +9,6 @@ import ru.gothmog.bookstore.domain.CartItem;
  * @author d.grushetskiy
  */
 @Transactional
-public interface BookToCartItemRepository extends CrudRepository<BookToCartItem, Long>{
+public interface BookToCartItemRepository extends CrudRepository<BookToCartItem, Long> {
     void deleteByCartItem(CartItem cartItem);
 }

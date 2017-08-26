@@ -10,7 +10,7 @@ import ru.gothmog.bookstore.service.UserShippingService;
  * @author gothmog on 26.08.2017.
  */
 @Service("UserShippingService")
-public class UserShippingServiceImpl implements UserShippingService{
+public class UserShippingServiceImpl implements UserShippingService {
     @Autowired
     private UserShippingRepository userShippingRepository;
 

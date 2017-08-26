@@ -12,7 +12,7 @@ import java.util.stream.Stream;
 /**
  * @author d.grushetskiy
  */
-public interface PasswordResetTokenRepository extends JpaRepository<PasswordResetToken, Long>{
+public interface PasswordResetTokenRepository extends JpaRepository<PasswordResetToken, Long> {
     PasswordResetToken findByToken(String token);
 
     PasswordResetToken findByUser(User user);

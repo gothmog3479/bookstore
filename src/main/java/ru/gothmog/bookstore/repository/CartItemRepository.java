@@ -12,7 +12,7 @@ import java.util.List;
  * @author d.grushetskiy
  */
 @Transactional
-public interface CartItemRepository extends CrudRepository<CartItem, Long>{
+public interface CartItemRepository extends CrudRepository<CartItem, Long> {
     List<CartItem> findByShoppingCart(ShoppingCart shoppingCart);
 
     List<CartItem> findByOrder(Order order);

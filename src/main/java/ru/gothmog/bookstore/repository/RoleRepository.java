@@ -6,6 +6,6 @@ import ru.gothmog.bookstore.domain.security.Role;
 /**
  * @author d.grushetskiy
  */
-public interface RoleRepository extends CrudRepository<Role, Long>{
+public interface RoleRepository extends CrudRepository<Role, Long> {
     Role findByname(String name);
 }

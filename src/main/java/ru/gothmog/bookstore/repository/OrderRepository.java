@@ -6,5 +6,5 @@ import ru.gothmog.bookstore.domain.Order;
 /**
  * @author d.grushetskiy
  */
-public interface OrderRepository extends CrudRepository<Order, Long>{
+public interface OrderRepository extends CrudRepository<Order, Long> {
 }

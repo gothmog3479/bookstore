@@ -21,8 +21,8 @@ public class BookServiceImpl implements BookService {
         List<Book> bookList = (List<Book>) bookRepository.findAll();
         List<Book> activeBookList = new ArrayList<>();
 
-        for (Book book: bookList) {
-            if(book.isActive()) {
+        for (Book book : bookList) {
+            if (book.isActive()) {
                 activeBookList.add(book);
             }
         }
@@ -34,13 +34,13 @@ public class BookServiceImpl implements BookService {
         return bookRepository.findOne(id);
     }
 
-    public List<Book> findByCategory(String category){
+    public List<Book> findByCategory(String category) {
         List<Book> bookList = bookRepository.findByCategory(category);
 
         List<Book> activeBookList = new ArrayList<>();
 
-        for (Book book: bookList) {
-            if(book.isActive()) {
+        for (Book book : bookList) {
+            if (book.isActive()) {
                 activeBookList.add(book);
             }
         }
@@ -52,8 +52,8 @@ public class BookServiceImpl implements BookService {
         List<Book> bookList = bookRepository.findByTitleContaining(title);
         List<Book> activeBookList = new ArrayList<>();
 
-        for (Book book: bookList) {
-            if(book.isActive()) {
+        for (Book book : bookList) {
+            if (book.isActive()) {
                 activeBookList.add(book);
             }
         }

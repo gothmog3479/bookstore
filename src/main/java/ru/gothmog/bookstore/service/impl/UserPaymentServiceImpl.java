@@ -9,9 +9,10 @@ import ru.gothmog.bookstore.service.UserPaymentService;
  * @author gothmog on 26.08.2017.
  */
 @Service
-public class UserPaymentServiceImpl implements UserPaymentService{
+public class UserPaymentServiceImpl implements UserPaymentService {
 
     private UserPaymentRepository userPaymentRepository;
+
     @Override
     public UserPayment findById(Long id) {
         return userPaymentRepository.findOne(id);

@@ -12,7 +12,7 @@ import java.util.Set;
 /**
  * @author d.grushetskiy
  */
-public interface UserService{
+public interface UserService {
     PasswordResetToken getPasswordResetToken(final String token);
 
     void createPasswordResetTokenForUser(final User user, final String token);
@@ -21,7 +21,7 @@ public interface UserService{
 
     User findByEmail(String email);
 
-    User findById (Long id);
+    User findById(Long id);
 
     User createUser(User user, Set<UserRole> userRoles) throws Exception;
 

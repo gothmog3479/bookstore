@@ -19,7 +19,7 @@ import java.util.Set;
  * @author d.grushetskiy
  */
 @Service("userService")
-public class UserServiceImpl implements UserService{
+public class UserServiceImpl implements UserService {
 
     private static final Logger LOG = LoggerFactory.getLogger(UserService.class);
 
@@ -68,10 +68,10 @@ public class UserServiceImpl implements UserService{
     @Transactional
     public User createUser(User user, Set<UserRole> userRoles) throws Exception {
         User localUser = userRepository.findByUsername(user.getUsername());
-        if (localUser != null){
+        if (localUser != null) {
             LOG.info("user {} already exists. Nothing will be done.", user.getUsername());
         } else {
-            for (UserRole userRole: userRoles){
+            for (UserRole userRole : userRoles) {
                 roleRepository.save(userRole.getRole());
             }
             user.getUserRoles().addAll(userRoles);
@@ -115,7 +115,7 @@ public class UserServiceImpl implements UserService{
     public void setUserDefaultPayment(Long userPaymentId, User user) {
         List<UserPayment> userPaymentList = (List<UserPayment>) userPaymentRepository.findAll();
 
-        for(UserPayment userPayment : userPaymentList){
+        for (UserPayment userPayment : userPaymentList) {
             if (userPayment.getId() == userPaymentId) {
                 userPayment.setDefaultPayment(true);
                 userPaymentRepository.save(userPayment);
@@ -130,7 +130,7 @@ public class UserServiceImpl implements UserService{
     public void setUserDefaultShipping(Long userShippingId, User user) {
         List<UserShipping> userShippingList = (List<UserShipping>) userShippingRepository.findAll();
 
-        for (UserShipping userShipping : userShippingList){
+        for (UserShipping userShipping : userShippingList) {
             if (userShipping.getId() == userShippingId) {
                 userShipping.setUserShippingDefault(true);
                 userShippingRepository.save(userShipping);

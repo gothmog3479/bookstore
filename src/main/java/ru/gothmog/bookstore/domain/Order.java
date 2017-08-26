@@ -24,16 +24,16 @@ public class Order {
     @OneToMany(mappedBy = "order", cascade = CascadeType.ALL)
     private List<CartItem> cartItemList;
 
-    @OneToOne(cascade=CascadeType.ALL)
+    @OneToOne(cascade = CascadeType.ALL)
     private ShippingAddress shippingAddress;
 
-    @OneToOne(cascade=CascadeType.ALL)
+    @OneToOne(cascade = CascadeType.ALL)
     private BillingAddress billingAddress;
 
     @OneToOne(cascade = CascadeType.ALL, mappedBy = "userPayment")
     private UserBilling userBilling;
 
-    @OneToOne(cascade=CascadeType.ALL)
+    @OneToOne(cascade = CascadeType.ALL)
     private Payment payment;
 
     @ManyToOne
@@ -110,7 +110,6 @@ public class Order {
     public void setPayment(Payment payment) {
         this.payment = payment;
     }
-
 
 
     public BillingAddress getBillingAddress() {

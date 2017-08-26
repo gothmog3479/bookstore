@@ -6,5 +6,5 @@ import ru.gothmog.bookstore.domain.UserPayment;
 /**
  * @author d.grushetskiy
  */
-public interface UserPaymentRepository extends CrudRepository<UserPayment, Long>{
+public interface UserPaymentRepository extends CrudRepository<UserPayment, Long> {
 }

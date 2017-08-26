@@ -14,7 +14,7 @@ import java.util.List;
  * @author gothmog on 26.08.2017.
  */
 @Service
-public class OrderServiceImpl implements OrderService{
+public class OrderServiceImpl implements OrderService {
     @Autowired
     private OrderRepository orderRepository;
 
@@ -36,7 +36,7 @@ public class OrderServiceImpl implements OrderService{
 
         List<CartItem> cartItemList = cartItemService.findByShoppingCart(shoppingCart);
 
-        for(CartItem cartItem : cartItemList) {
+        for (CartItem cartItem : cartItemList) {
             Book book = cartItem.getBook();
             cartItem.setOrder(order);
             book.setInStockNumber(book.getInStockNumber() - cartItem.getQty());

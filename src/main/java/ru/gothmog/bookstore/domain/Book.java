@@ -11,9 +11,8 @@ import java.util.List;
  */
 @Entity
 public class Book {
-
     @Id
-    @GeneratedValue(strategy= GenerationType.AUTO)
+    @GeneratedValue(strategy = GenerationType.AUTO)
     private Long id;
     private String title;
     private String author;
@@ -27,9 +26,9 @@ public class Book {
     private double shippingWeight;
     private double listPrice;
     private double ourPrice;
-    private boolean active=true;
+    private boolean active = true;
 
-    @Column(columnDefinition="text")
+    @Column(columnDefinition = "text")
     private String description;
     private int inStockNumber;
 
