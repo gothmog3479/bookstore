@@ -12,6 +12,7 @@ import ru.gothmog.bookstore.repository.*;
 import ru.gothmog.bookstore.service.UserService;
 
 import java.util.ArrayList;
+import java.util.List;
 import java.util.Set;
 
 /**
@@ -94,21 +95,49 @@ public class UserServiceImpl implements UserService{
 
     @Override
     public void updateUserBilling(UserBilling userBilling, UserPayment userPayment, User user) {
-
+        userPayment.setUser(user);
+        userPayment.setUserBilling(userBilling);
+        userPayment.setDefaultPayment(true);
+        userBilling.setUserPayment(userPayment);
+        user.getUserPaymentList().add(userPayment);
+        save(user);
     }
 
     @Override
     public void updateUserShipping(UserShipping userShipping, User user) {
-
+        userShipping.setUser(user);
+        userShipping.setUserShippingDefault(true);
+        user.getUserShippingList().add(userShipping);
+        save(user);
     }
 
     @Override
     public void setUserDefaultPayment(Long userPaymentId, User user) {
+        List<UserPayment> userPaymentList = (List<UserPayment>) userPaymentRepository.findAll();
 
+        for(UserPayment userPayment : userPaymentList){
+            if (userPayment.getId() == userPaymentId) {
+                userPayment.setDefaultPayment(true);
+                userPaymentRepository.save(userPayment);
+            } else {
+                userPayment.setDefaultPayment(false);
+                userPaymentRepository.save(userPayment);
+            }
+        }
     }
 
     @Override
     public void setUserDefaultShipping(Long userShippingId, User user) {
+        List<UserShipping> userShippingList = (List<UserShipping>) userShippingRepository.findAll();
 
+        for (UserShipping userShipping : userShippingList){
+            if (userShipping.getId() == userShippingId) {
+                userShipping.setUserShippingDefault(true);
+                userShippingRepository.save(userShipping);
+            } else {
+                userShipping.setUserShippingDefault(false);
+                userShippingRepository.save(userShipping);
+            }
+        }
     }
 }
