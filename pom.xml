@@ -12,7 +12,7 @@
     <!--Versions of libraries-->
     <properties>
         <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
-        <spring.version>4.3.8.RELEASE</spring.version>
+        <spring.version>4.3.10.RELEASE</spring.version>
         <spring.security.version>4.2.2.RELEASE</spring.security.version>
         <spring.data>1.11.4.RELEASE</spring.data>
         <postgres.driver.version>9.4.1212</postgres.driver.version>
@@ -114,6 +114,12 @@
         <dependency>
             <groupId>org.springframework</groupId>
             <artifactId>spring-test</artifactId>
+            <version>${spring.version}</version>
+        </dependency>
+        <!-- spring simple mail message-->
+        <dependency>
+            <groupId>org.springframework</groupId>
+            <artifactId>spring-context-support</artifactId>
             <version>${spring.version}</version>
         </dependency>
         <!--JSP -->
