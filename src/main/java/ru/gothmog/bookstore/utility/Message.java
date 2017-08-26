@@ -1,4 +1,4 @@
-package ru.gothmog.bookstore.model;
+package ru.gothmog.bookstore.utility;
 
 import org.springframework.stereotype.Component;
 

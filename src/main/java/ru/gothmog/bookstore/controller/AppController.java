@@ -7,7 +7,7 @@ import org.springframework.beans.factory.annotation.Value;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
-import ru.gothmog.bookstore.model.Message;
+import ru.gothmog.bookstore.utility.Message;
 
 /**
  * @author d.grushetskiy
