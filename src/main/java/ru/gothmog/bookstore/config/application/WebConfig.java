@@ -26,6 +26,7 @@ import org.thymeleaf.templatemode.TemplateMode;
         "ru.gothmog.bookstore.config.*",
         "ru.gothmog.bookstore.controller",
         "ru.gothmog.bookstore.service",
+        "ru.gothmog.bookstore.domain",
         "ru.gothmog.bookstore.repository",
         "ru.gothmog.bookstore.utility"})
 public class WebConfig extends WebMvcConfigurerAdapter implements ApplicationContextAware {

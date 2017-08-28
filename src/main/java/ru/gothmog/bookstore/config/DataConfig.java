@@ -39,7 +39,7 @@ public class DataConfig {
         LocalContainerEntityManagerFactoryBean entityManagerFactoryBean = new LocalContainerEntityManagerFactoryBean();
         entityManagerFactoryBean.setDataSource(dataSource());
         entityManagerFactoryBean.setPersistenceProviderClass(HibernatePersistenceProvider.class);
-        entityManagerFactoryBean.setPackagesToScan("ru.gothmog.itinvent.domain.*");
+        entityManagerFactoryBean.setPackagesToScan("ru.gothmog.bookstore.domain");
         entityManagerFactoryBean.setJpaProperties(hibernateProperties());
         return entityManagerFactoryBean;
     }
@@ -59,7 +59,7 @@ public class DataConfig {
         return properties;
     }
 
-    @Bean
+    @Bean(destroyMethod = "close")
     public DataSource dataSource() {
         if (dataSource == null) {
             HikariConfig hikariConfig = new HikariConfig();

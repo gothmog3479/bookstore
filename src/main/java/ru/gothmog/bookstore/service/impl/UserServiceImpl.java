@@ -18,7 +18,7 @@ import java.util.Set;
 /**
  * @author d.grushetskiy
  */
-@Service("userService")
+@Service
 public class UserServiceImpl implements UserService {
 
     private static final Logger LOG = LoggerFactory.getLogger(UserService.class);
