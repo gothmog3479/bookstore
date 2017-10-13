@@ -6,21 +6,23 @@ import javax.persistence.*;
 import java.util.Calendar;
 import java.util.Date;
 
-/**
- * @author d.grushetskiy
- */
 @Entity
+@Table(name = "password_reset_token", indexes = {@Index(name = "idx_password_reset_token_user_id", columnList = "users_pkey", unique = true)})
 public class PasswordResetToken {
+
     private static final int EXPIRATION = 60 * 24;
 
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
+ // @Column(name = "password_reset_token_id")
     private Long id;
 
+    @Column(name = "token")
     private String token;
 
+    //@OneToOne(cascade = CascadeType.ALL, orphanRemoval = true, fetch = FetchType.EAGER)
     @OneToOne(targetEntity = User.class, fetch = FetchType.EAGER)
-    @JoinColumn(nullable = false, name = "user_id")
+    @JoinColumn(nullable = false, name = "users_pkey")
     private User user;
 
     private Date expiryDate;
@@ -29,26 +31,26 @@ public class PasswordResetToken {
     }
 
     public PasswordResetToken(final String token, final User user) {
-        super();
+        super ();
         this.token = token;
         this.user = user;
         this.expiryDate = calculateExpiryDate(EXPIRATION);
     }
 
-    public static int getExpiration() {
-        return EXPIRATION;
-    }
-
-    private Date calculateExpiryDate(final int expiryTimeInMinutes) {
-        final Calendar calendar = Calendar.getInstance();
-        calendar.setTimeInMillis(new Date().getTime());
-        calendar.add(Calendar.MINUTE, expiryTimeInMinutes);
-        return new Date(calendar.getTime().getTime());
+    private Date calculateExpiryDate (final int expiryTimeInMinutes) {
+        final Calendar cal = Calendar.getInstance();
+        cal.setTimeInMillis(new Date().getTime());
+        cal.add(Calendar.MINUTE, expiryTimeInMinutes);
+        return new Date(cal.getTime().getTime());
     }
 
     public void updateToken(final String token) {
         this.token = token;
         this.expiryDate = calculateExpiryDate(EXPIRATION);
+    }
+
+    public static int getEXPIRATION() {
+        return EXPIRATION;
     }
 
     public Long getId() {

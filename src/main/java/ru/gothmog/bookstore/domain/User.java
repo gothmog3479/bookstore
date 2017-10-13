@@ -9,41 +9,24 @@ import ru.gothmog.bookstore.domain.security.UserRole;
 import javax.persistence.*;
 import java.util.Collection;
 import java.util.HashSet;
-import java.util.List;
 import java.util.Set;
 
-/**
- * @author d.grushetskiy
- */
 @Entity
+@Table(name = "users")
 public class User implements UserDetails {
 
     @Id
-    @GeneratedValue(strategy = GenerationType.AUTO)
-    @Column(name = "id", nullable = false, updatable = false)
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
-
     private String username;
     private String password;
     private String firstName;
     private String lastName;
 
-    @Column(name = "email", nullable = false, updatable = false)
+    @Column(name = "email", nullable = false, length = 150)
     private String email;
     private String phone;
-    private boolean enabled = true;
-
-    @OneToOne(cascade = CascadeType.ALL, mappedBy = "user")
-    private ShoppingCart shoppingCart;
-
-    @OneToMany(cascade = CascadeType.ALL, mappedBy = "user")
-    private List<UserShipping> userShippingList;
-
-    @OneToMany(cascade = CascadeType.ALL, mappedBy = "user")
-    private List<UserPayment> userPaymentList;
-
-    @OneToMany(mappedBy = "user")
-    private List<Order> orderList;
+    private boolean enable = true;
 
     @OneToMany(mappedBy = "user", cascade = CascadeType.ALL, fetch = FetchType.EAGER)
     @JsonIgnore
@@ -64,6 +47,36 @@ public class User implements UserDetails {
 
     public void setUsername(String username) {
         this.username = username;
+    }
+
+    @Override
+    public boolean isAccountNonExpired() {
+        // TODO Auto-generated method stub
+        return true;
+    }
+
+    @Override
+    public boolean isAccountNonLocked() {
+        // TODO Auto-generated method stub
+        return true;
+    }
+
+    @Override
+    public boolean isCredentialsNonExpired() {
+        // TODO Auto-generated method stub
+        return true;
+    }
+
+    @Override
+    public boolean isEnabled() {
+        return enable;
+    }
+
+    @Override
+    public Collection<? extends GrantedAuthority> getAuthorities() {
+        Set<GrantedAuthority> authorities = new HashSet<>();
+        userRoles.forEach(userRole -> authorities.add(new Authority(userRole.getRole().getName())));
+        return authorities;
     }
 
     public String getPassword() {
@@ -106,78 +119,19 @@ public class User implements UserDetails {
         this.phone = phone;
     }
 
+    public boolean isEnable() {
+        return enable;
+    }
+
+    public void setEnable(boolean enable) {
+        this.enable = enable;
+    }
+
     public Set<UserRole> getUserRoles() {
         return userRoles;
     }
 
     public void setUserRoles(Set<UserRole> userRoles) {
         this.userRoles = userRoles;
-    }
-
-    public List<UserShipping> getUserShippingList() {
-        return userShippingList;
-    }
-
-    public void setUserShippingList(List<UserShipping> userShippingList) {
-        this.userShippingList = userShippingList;
-    }
-
-    public List<UserPayment> getUserPaymentList() {
-        return userPaymentList;
-    }
-
-    public void setUserPaymentList(List<UserPayment> userPaymentList) {
-        this.userPaymentList = userPaymentList;
-    }
-
-    public ShoppingCart getShoppingCart() {
-        return shoppingCart;
-    }
-
-    public void setShoppingCart(ShoppingCart shoppingCart) {
-        this.shoppingCart = shoppingCart;
-    }
-
-    public List<Order> getOrderList() {
-        return orderList;
-    }
-
-    public void setOrderList(List<Order> orderList) {
-        this.orderList = orderList;
-    }
-
-    @Override
-    public Collection<? extends GrantedAuthority> getAuthorities() {
-        Set<GrantedAuthority> authorites = new HashSet<>();
-        userRoles.forEach(ur -> authorites.add(new Authority(ur.getRole().getName())));
-
-        return authorites;
-    }
-
-    @Override
-    public boolean isAccountNonExpired() {
-        // TODO Auto-generated method stub
-        return true;
-    }
-
-    @Override
-    public boolean isAccountNonLocked() {
-        // TODO Auto-generated method stub
-        return true;
-    }
-
-    @Override
-    public boolean isCredentialsNonExpired() {
-        // TODO Auto-generated method stub
-        return true;
-    }
-
-    @Override
-    public boolean isEnabled() {
-        return enabled;
-    }
-
-    public void setEnabled(boolean enabled) {
-        this.enabled = enabled;
     }
 }

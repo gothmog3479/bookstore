@@ -7,9 +7,6 @@ import ru.gothmog.bookstore.config.application.WebConfig;
 import javax.servlet.Filter;
 import javax.servlet.ServletRegistration;
 
-/**
- * @author d.grushetskiy
- */
 public class WebAppInitializer extends AbstractAnnotationConfigDispatcherServletInitializer {
     @Override
     protected Class<?>[] getRootConfigClasses() {

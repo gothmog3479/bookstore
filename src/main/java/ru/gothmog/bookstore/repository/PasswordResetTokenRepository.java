@@ -3,16 +3,15 @@ package ru.gothmog.bookstore.repository;
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.data.jpa.repository.Modifying;
 import org.springframework.data.jpa.repository.Query;
+import org.springframework.stereotype.Repository;
 import ru.gothmog.bookstore.domain.User;
 import ru.gothmog.bookstore.domain.security.PasswordResetToken;
 
 import java.util.Date;
 import java.util.stream.Stream;
+@Repository
+public interface PasswordResetTokenRepository extends JpaRepository<PasswordResetToken, Long>{
 
-/**
- * @author d.grushetskiy
- */
-public interface PasswordResetTokenRepository extends JpaRepository<PasswordResetToken, Long> {
     PasswordResetToken findByToken(String token);
 
     PasswordResetToken findByUser(User user);

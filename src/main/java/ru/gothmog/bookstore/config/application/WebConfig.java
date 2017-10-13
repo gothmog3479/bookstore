@@ -8,6 +8,7 @@ import org.springframework.context.annotation.ComponentScan;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.context.support.ResourceBundleMessageSource;
 import org.springframework.format.FormatterRegistry;
+import org.springframework.http.CacheControl;
 import org.springframework.web.servlet.config.annotation.EnableWebMvc;
 import org.springframework.web.servlet.config.annotation.ResourceHandlerRegistry;
 import org.springframework.web.servlet.config.annotation.WebMvcConfigurerAdapter;
@@ -17,17 +18,16 @@ import org.thymeleaf.spring4.templateresolver.SpringResourceTemplateResolver;
 import org.thymeleaf.spring4.view.ThymeleafViewResolver;
 import org.thymeleaf.templatemode.TemplateMode;
 
-/**
- * @author d.grushetskiy
- */
+import java.util.concurrent.TimeUnit;
+
 @Configuration
 @EnableWebMvc
 @ComponentScan({"ru.gothmog.bookstore.*",
         "ru.gothmog.bookstore.config.*",
         "ru.gothmog.bookstore.controller",
-        "ru.gothmog.bookstore.service",
         "ru.gothmog.bookstore.domain",
         "ru.gothmog.bookstore.repository",
+        "ru.gothmog.bookstore.service",
         "ru.gothmog.bookstore.utility"})
 public class WebConfig extends WebMvcConfigurerAdapter implements ApplicationContextAware {
     private static final String TEMPLATES = "/WEB-INF/templates/";
@@ -48,7 +48,7 @@ public class WebConfig extends WebMvcConfigurerAdapter implements ApplicationCon
         this.applicationContext = applicationContext;
     }
 
-    /* ******************************************************************* */
+     /* ******************************************************************* */
     /*  GENERAL CONFIGURATION ARTIFACTS                                    */
     /*  Static Resources, i18n Messages, Formatters (Conversion Service)   */
     /* ******************************************************************* */
@@ -59,7 +59,9 @@ public class WebConfig extends WebMvcConfigurerAdapter implements ApplicationCon
     @Override
     public void addResourceHandlers(final ResourceHandlerRegistry registry) {
         super.addResourceHandlers(registry);
-        registry.addResourceHandler(RESOURCES_HANDLER).addResourceLocations(RESOURCES_LOCATION);
+        registry.addResourceHandler(RESOURCES_HANDLER).addResourceLocations(RESOURCES_LOCATION)
+                .setCacheControl(CacheControl.maxAge(30L, TimeUnit.DAYS)
+                        .cachePublic()).resourceChain(true);
     }
 
     /*
